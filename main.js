@@ -58,7 +58,6 @@ var Main = function () {
 
     const OneCharWidth = ctx.measureText(texts_main[0]).width + letterSpacing;
     const length = Math.floor((height - textMargin * 2) / OneCharWidth);
-    alert(length);
     const targetTxtMainArray = [];
     const targetTxtMainArrayLength = Math.ceil(texts_main.length / length);
     for( var i =0; i < targetTxtMainArrayLength ; i ++) {
