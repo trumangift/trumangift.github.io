@@ -18,7 +18,7 @@ var Main = function () {
         height = parseInt(document.documentElement.clientHeight),
         area = width * height, // canvas区域面积
         cssText = 'width: '+width+'px; height: '+height+'px;',
-        letterSpacing = 0,
+        letterSpacing = 10,
         textMargin = 200;
         ctx.font="60px Georgia";
     // 设置背景和canvas的宽高
@@ -40,7 +40,7 @@ var Main = function () {
     // 生成文字
     const drawTEXT = new drawText();
     const charWidth =  ctx.measureText(texts).width;
-    drawTEXT.init(canvas, width * 2  - 100, (height * 2 - charWidth * texts.length - letterSpacing * texts.length) / 2, letterSpacing);
+    drawTEXT.init(canvas, width * 2  - 100, (height * 2 - charWidth * texts.length - letterSpacing * (texts.length -1 )) / 2, letterSpacing);
 
 
     /**
@@ -56,7 +56,7 @@ var Main = function () {
        }
     }, 400);
 
-    const OneCharWidth = ctx.measureText(texts_main[0]).width * 2 + letterSpacing;
+    const OneCharWidth = ctx.measureText(texts_main[0]).width * 2 + letterSpacing / 2;
     const length = Math.floor((height - textMargin * 2) / OneCharWidth);
     const targetTxtMainArray = [];
     const targetTxtMainArrayLength = Math.ceil(texts_main.length / length);
@@ -146,7 +146,7 @@ var Main = function () {
         }
         drawTEXT.draw(text);
         for (var i = 0; i < text_main_array.length; i++) {
-            drawTEXT.draw(text_main_array[i], width * 2  - (i * 100 + 200), textMargin, letterSpacing);
+            drawTEXT.draw(text_main_array[i], width * 2  - (i * 100 + 200), textMargin);
         }
         requestAnimFrame(animateUpdate);
     }
