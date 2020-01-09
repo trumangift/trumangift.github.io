@@ -1,0 +1,12 @@
+{
+  "name": "canvas-dots-lines",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.17.1"
+  },
+  "dependencies": {
+    "canvas-gif-encoder": "^0.1.2"
+  }
+}
