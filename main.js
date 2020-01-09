@@ -18,7 +18,7 @@ var Main = function () {
         height = parseInt(document.documentElement.clientHeight),
         area = width * height, // canvas区域面积
         cssText = 'width: '+width+'px; height: '+height+'px;',
-        letterSpacing = 10,
+        letterSpacing = 0,
         textMargin = 200;
         ctx.font="60px Georgia";
     // 设置背景和canvas的宽高
@@ -56,7 +56,7 @@ var Main = function () {
        }
     }, 400);
 
-    const OneCharWidth = ctx.measureText(texts_main[0]).width + letterSpacing;
+    const OneCharWidth = ctx.measureText(texts_main[0]).width * 2 + letterSpacing;
     const length = Math.floor((height - textMargin * 2) / OneCharWidth);
     const targetTxtMainArray = [];
     const targetTxtMainArrayLength = Math.ceil(texts_main.length / length);
