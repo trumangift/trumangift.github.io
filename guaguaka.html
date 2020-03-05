@@ -45,6 +45,7 @@
 					ctx.lineTo(px+1,py+1);
 					ctx.stroke();
 					ctx.restore();
+					e.preventDefault();
 				}, false);
 				
 				ggk.addEventListener('touchmove', function(e) {
@@ -56,6 +57,7 @@
 					ctx.lineTo(px+1,py+1);
 					ctx.stroke();
 					ctx.restore();
+					e.preventDefault();
 				}, false);
 			}
 
