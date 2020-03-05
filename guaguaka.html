@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>刮刮卡</title>
+		<style>
+			html,body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="ggk">
+			
+		</canvas>
+	</body>
+	<script>
+		window.onload = function() {
+			const ggk = document.querySelector('#ggk');
+			ggk.width = document.documentElement.clientWidth;
+			ggk.height = document.documentElement.clientHeight;
+			ggk.style.backgroundImage='url(./img/niu.jpeg)';
+			ggk.style.backgroundSize = '100% 100%';
+			if (ggk.getContext('2d')) {
+				const ctx = ggk.getContext('2d');
+				ctx.lineWidth = 50;
+				ctx.lineCap = 'round';
+				ctx.lineJoin = 'round';
+				let img = new Image();
+				img.src = './img/fu.jpeg';
+				img.onload = function() {
+					ctx.drawImage(img, 0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight);
+					ctx.globalCompositeOperation = 'destination-out';
+				}
+				ggk.addEventListener('touchstart', function(e) {
+					ctx.save();
+					var e = e || event;
+					let changeT = e.changedTouches[0];
+					let px = changeT.clientX - ggk.offsetLeft;
+					let py = changeT.clientY - ggk.offsetTop;
+					ctx.moveTo(px, py);
+					ctx.lineTo(px+1,py+1);
+					ctx.stroke();
+					ctx.restore();
+				}, false);
+				
+				ggk.addEventListener('touchmove', function(e) {
+					ctx.save();
+					var e = e || event;
+					let changeT = e.changedTouches[0];
+					let px = changeT.clientX - ggk.offsetLeft;
+					let py = changeT.clientY - ggk.offsetTop;
+					ctx.lineTo(px+1,py+1);
+					ctx.stroke();
+					ctx.restore();
+				}, false);
+			}
+
+		}
+	</script>
+</html>
