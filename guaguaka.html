@@ -16,6 +16,8 @@
 		<canvas id="ggk">
 			
 		</canvas>
+		<audio  src="./audio/wj.mp3" controls="controls" autoplay="autoplay" id="audios">
+		</audio>
 	</body>
 	<script>
 		window.onload = function() {
@@ -30,6 +32,7 @@
 				ctx.lineCap = 'round';
 				ctx.lineJoin = 'round';
 				let img = new Image();
+				img.setAttribute("crossOrigin",'anonymous')
 				img.src = './img/fu.jpeg';
 				img.onload = function() {
 					ctx.drawImage(img, 0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight);
@@ -46,6 +49,8 @@
 					ctx.stroke();
 					ctx.restore();
 					e.preventDefault();
+					var audio = document.getElementById('audios');
+					audio.play();
 				}, false);
 				
 				ggk.addEventListener('touchmove', function(e) {
